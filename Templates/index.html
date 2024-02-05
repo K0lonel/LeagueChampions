@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ res + image_sources[133]['skins'][6]['tilePath']}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Champion Collection</title>
+</head>
+<body>
+    <div class="championName fancyTitle">Champions</div>
+    <div class="pageContent" id="skins">
+        <div class="skinsList">
+            <div class="champion">
+                <div class="championSkins">
+                    {% for image_source in image_sources %}
+                        {% if image_source['skins'] %}
+                            <a class="championSkinSingle" href="{{ url_for('skin_details', champion_skin_name=image_source['name']) }}">
+                                <div class="skinImageContainer">
+                                    <img class="skinImg" loading="lazy" width="1280" height="720" src="{{ res + image_source['skins'][0]['splashPath'] }}" alt="Imagine">
+                                </div>
+                                {% if image_source['name'] %}
+                                    <div class="skinDetails">
+                                        <div class="skinName">{{ image_source["name"] }}</div>
+                                    </div>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

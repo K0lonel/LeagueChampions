@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ res + image_sources[133]['skins'][6]['tilePath']}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Skin Details</title>
+</head>
+<body>
+    <div class="pageContent" id="specificskin">
+        <div class="skinPageGrid">
+            <div class="skinData">
+                <div class="skinTitle fancyTitle">
+                    <img class="skinIcon" width="380" height="380" src= "{{ res + skin_data['skins'][0]['tilePath'] }}" />
+                    <div class="skinName">{{ skin_data['name'] }}</div>
+                </div>
+                <div class="skinDesc">
+                    {{skin_data['shortBio']}}
+                </div>
+            </div>
+            <div class="splashArt">
+                <img class="skinArt" alt="{{ skin_data['name'] }} splash art" width="1215" height="717" src="{{ res + skin_data['skins'][0]['splashPath'] }}" />
+            </div>
+        </div>
+        <div class="moreSkins">
+            <div class="champName fancyTitle">More {{ skin_data['name'] }} Skins</div>
+            <div class="skinsRow">
+                    {% for image_source in skin_data['skins'] %}
+                    <a class="championSkinSingle">
+                        <div class="skinImageContainer">
+                            <img
+                                class="skinImg"
+                                alt="{{ skin_data['name'] }} splash art"
+                                loading="lazy"
+                                width="308"
+                                height="560"
+                                src="{{ res + image_source['loadScreenPath'] }}"
+                            />
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>   
+</body>
+</html>
